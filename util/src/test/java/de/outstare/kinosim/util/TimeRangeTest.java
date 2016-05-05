@@ -43,4 +43,26 @@ public class TimeRangeTest {
 		assertEquals(5, oneSix.toHours());
 		assertEquals(3, wrapping.toHours());
 	}
+	
+	@Test
+	public void testEndsNextDay(){
+		LocalTime start1, end1, start2, end2;
+		
+		start1 = LocalTime.of(10, 17, 5);
+		end1 = LocalTime.of(10, 17, 0);
+		start2 = LocalTime.of(23, 59, 51);
+		end2 = LocalTime.of(0, 2, 29);
+		
+		TimeRange rngNo = new TimeRange(start1, end1);
+		assertFalse(rngNo.endsNextDay());
+		TimeRange rngYes = new TimeRange(start2, end2);
+		assertTrue(rngYes.endsNextDay());
+		
+		start1 = null;
+		end1 = null;
+		start2 = null;
+		end2 = null;
+		
+	}
+	
 }
