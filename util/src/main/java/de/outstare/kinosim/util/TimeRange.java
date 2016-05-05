@@ -59,7 +59,8 @@ public class TimeRange {
 	 * @return <code>true</code> if the end of this time range is an the next day.
 	 */
 	public boolean endsNextDay() {
-		return start.isAfter(end);
+		return start.getHour() <= LocalTime.MAX.getHour()  && start.getHour() > LocalTime.NOON.getHour()
+        		&& end.getHour() >= LocalTime.MIN.getHour() && end.getHour() < LocalTime.NOON.getHour();
 	}
 
 	public Duration getDuration() {
